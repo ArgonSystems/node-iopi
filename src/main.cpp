@@ -9,17 +9,11 @@ extern "C"{
 using namespace v8;
 
 void initIOPI(const Nan::FunctionCallbackInfo<Value>& args){
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
   char address = args[0]->NumberValue();
   IOPi_init(address);
-  // Local<Number> num = Nan::New(address);
-  // args.GetReturnValue().Set(num);
 }
 
 void setPortDirection(const Nan::FunctionCallbackInfo<Value>& args){
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
   char address = args[0]->NumberValue();
   char port = args[1]->NumberValue();
   char direction = args[2]->NumberValue();
@@ -27,8 +21,6 @@ void setPortDirection(const Nan::FunctionCallbackInfo<Value>& args){
 }
 
 void setPinDirection(const Nan::FunctionCallbackInfo<Value>& args){
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
   char address = args[0]->NumberValue();
   char pin = args[1]->NumberValue();
   char direction = args[2]->NumberValue();
@@ -36,8 +28,6 @@ void setPinDirection(const Nan::FunctionCallbackInfo<Value>& args){
 }
 
 void writePort(const Nan::FunctionCallbackInfo<Value>& args){
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
   char address = args[0]->NumberValue();
   char port = args[1]->NumberValue();
   char value = args[2]->NumberValue();
@@ -45,8 +35,6 @@ void writePort(const Nan::FunctionCallbackInfo<Value>& args){
 }
 
 void writePin(const Nan::FunctionCallbackInfo<Value>& args){
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
   char address = args[0]->NumberValue();
   char pin = args[1]->NumberValue();
   char value = args[2]->NumberValue();
