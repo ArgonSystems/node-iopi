@@ -21,17 +21,18 @@ process.on('SIGINT', function(){
   led.closeChannel("red");
   led.closeChannel("green");
   led.closeChannel("blue");
+  process.exit();
 }.bind(null, {exit:true}));
 
 var loop=function(){
   led.openChannel("red");
-  sleep(3);
+  usleep(3000);
   led.closeChannel("red");
   led.openChannel("green");
-  sleep(3);
+  usleep(3000);
   led.closeChannel("green");
   led.openChannel("blue");
-  sleep(3);
+  usleep(3000);
   led.closeChannel("blue");
   setTimeout(loop,0);
 };
