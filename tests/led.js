@@ -1,7 +1,7 @@
 var iopi = require("../index");
 var sleep = require("sleep").sleep;
 var usleep = require("sleep").usleep;
-iopi.init(bus);
+iopi.init(0x27);
 
 var led=new LED(0x27,{red:1,green:2,blue:3});
 process.on('SIGINT', function(){
