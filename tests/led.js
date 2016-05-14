@@ -13,7 +13,7 @@ class LED{
   }
   closeChannel(channel){
     iopi.setPinDirection(this.bus,this.channels[channel],0);
-    iopi.writePin(this.bus, this.channels[channel], 1);
+    iopi.writePin(this.bus, this.channels[channel], 0);
   }
 }
 var led=new LED(0x27,{red:1,green:2,blue:3});
