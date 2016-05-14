@@ -3,8 +3,7 @@ var sleep = require("sleep").sleep;
 var usleep = require("sleep").usleep;
 var bus=0x27;
 iopi.init(bus);
-
-var led={
+var LED={
   channels:{
     red:1,
     green:2,
@@ -19,6 +18,7 @@ var led={
     iopi.writePin(bus, this.channels[channel], 1);
   },
 };
+var led=new LED();
 process.on('SIGINT', ()=>{
   led.closeChannel("red");
   led.closeChannel("green");
