@@ -23,17 +23,19 @@ process.on('SIGINT', function(){
   led.closeChannel("blue");
 }.bind(null, {exit:true}));
 
-while(true){
+var loop=function(){
   led.openChannel("red");
+  sleep(3);
   led.closeChannel("red");
-  sleep(3);
   led.openChannel("green");
+  sleep(3);
   led.closeChannel("green");
-  sleep(3);
   led.openChannel("blue");
-  led.closeChannel("blue");
   sleep(3);
-}
+  led.closeChannel("blue");
+  setTimeout(loop,0);
+};
+setTimeout(loop,0);
 // iopi.setPinDirection(0x27, 1, 0x00);
 // iopi.writePin(0x27, 1, 1);
 // iopi.setPinDirection(0x27, 2, 0x00);
