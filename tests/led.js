@@ -1,5 +1,5 @@
 var iopi = require("../index");
-var sleep = require("sleep").sleep;
+var Timer = require("nanotimer");
 var usleep = require("sleep").usleep;
 iopi.init(0x27);
 class LED{
@@ -23,20 +23,20 @@ process.on('SIGINT', function(){
   led.closeChannel("blue");
   process.exit();
 }.bind(null, {exit:true}));
-
+var timer=new Timer();
 var loop=function(){
   led.openChannel("red");
-  usleep(3000);
+  usleep(1000);
   led.closeChannel("red");
   led.openChannel("green");
-  usleep(3000);
+  usleep(1000);
   led.closeChannel("green");
   led.openChannel("blue");
-  usleep(3000);
+  usleep(1000);
   led.closeChannel("blue");
-  setTimeout(loop,0);
+  timer.setTimeout(loop,'','100u');
 };
-setTimeout(loop,0);
+timer.setTimeout(loop,'','100u');
 // iopi.setPinDirection(0x27, 1, 0x00);
 // iopi.writePin(0x27, 1, 1);
 // iopi.setPinDirection(0x27, 2, 0x00);

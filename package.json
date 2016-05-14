@@ -12,6 +12,7 @@
     "nan": "^2.3.3"
   },
   "devDependencies": {
+    "nanotimer": "^0.3.14",
     "sleep": "^3.0.1"
   }
 }
