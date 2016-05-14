@@ -14,15 +14,48 @@
 #include <sys/ioctl.h>
 #include <fcntl.h>
 #include <time.h>
+
+#include "ABE_IoPi.c"
+
 using namespace v8;
-void init(const FunctionCallbackInfo<Value>& args){
+
+void initIOPI(const FunctionCallbackInfo<Value>& args){
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-  
+
 }
 
-void init(Handle<Object> exports) {
-  NODE_SET_METHOD(exports, "init", init);
+
+void setPortDirection(const FunctionCallbackInfo<Value>& args){
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
+
 }
 
-NODE_MODULE(iopi, init)
+void setPinDirection(const FunctionCallbackInfo<Value>& args){
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
+
+}
+
+void writePort(const FunctionCallbackInfo<Value>& args){
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
+
+}
+
+void writePin(const FunctionCallbackInfo<Value>& args){
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
+
+}
+
+void setup(Handle<Object> exports) {
+  NODE_SET_METHOD(exports, "init", initIOPI);
+  NODE_SET_METHOD(exports, "writePort", writePort)
+  NODE_SET_METHOD(exports, "writePin", writePin)
+  NODE_SET_METHOD(exports, "setPortDirection", set_port_direction);
+  NODE_SET_METHOD(exports, "setPinDirection", set_pin_direction);
+}
+
+NODE_MODULE(iopi, setup)
