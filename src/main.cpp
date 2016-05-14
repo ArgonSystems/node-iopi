@@ -22,7 +22,8 @@ using namespace v8;
 void initIOPI(const Nan::FunctionCallbackInfo<Value>& args){
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-
+  double address = args[0]->NumberValue();
+  IOPi_init((char)address);
 }
 
 void setPortDirection(const Nan::FunctionCallbackInfo<Value>& args){
