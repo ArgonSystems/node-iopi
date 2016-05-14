@@ -19,32 +19,32 @@
 
 using namespace v8;
 
-void initIOPI(const FunctionCallbackInfo<Value>& args){
+void initIOPI(const Nan::FunctionCallbackInfo<Value>& args){
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
+  double address = args[0]->NumberValue();
+  IOPi_init((char)address);
+}
+
+void setPortDirection(const Nan::FunctionCallbackInfo<Value>& args){
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
 }
 
-
-void setPortDirection(const FunctionCallbackInfo<Value>& args){
+void setPinDirection(const Nan::FunctionCallbackInfo<Value>& args){
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
 }
 
-void setPinDirection(const FunctionCallbackInfo<Value>& args){
+void writePort(const Nan::FunctionCallbackInfo<Value>& args){
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
 }
 
-void writePort(const FunctionCallbackInfo<Value>& args){
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
-
-}
-
-void writePin(const FunctionCallbackInfo<Value>& args){
+void writePin(const Nan::FunctionCallbackInfo<Value>& args){
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
@@ -52,10 +52,10 @@ void writePin(const FunctionCallbackInfo<Value>& args){
 
 void setup(Handle<Object> exports) {
   NODE_SET_METHOD(exports, "init", initIOPI);
-  NODE_SET_METHOD(exports, "writePort", writePort)
-  NODE_SET_METHOD(exports, "writePin", writePin)
   NODE_SET_METHOD(exports, "setPortDirection", set_port_direction);
   NODE_SET_METHOD(exports, "setPinDirection", set_pin_direction);
+  NODE_SET_METHOD(exports, "writePort", writePort)
+  NODE_SET_METHOD(exports, "writePin", writePin)
 }
 
 NODE_MODULE(iopi, setup)
