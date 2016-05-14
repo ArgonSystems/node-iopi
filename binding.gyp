@@ -1,7 +1,7 @@
 {
   "variables":{
     "arch%":"x86_64",
-    "lib%":"lib/x86_64"
+    "lib%":"lib"
   },
   "target_defaults":{
     "defines":[
@@ -20,7 +20,7 @@
     "ldflags": [
       "-std=c++11",
       "-w",
-      "-Wl,-rpath='$$ORIGIN/../../lib/x86_64/'",
+      "-Wl,-rpath='$$ORIGIN/../../lib/'",
     #   "-fPIC"
     ],
     "include_dirs":[
@@ -33,7 +33,7 @@
       "target_name":"iopi",
       "sources":["src/main.cpp"],
       "libraries":[
-        # "../<(lib)/libname.so",
+        # "../<(lib)/ABElectronics_C_Libraries/IOPi/ABE_IoPi.so",
       ]
     }
   ]
