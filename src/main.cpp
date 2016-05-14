@@ -15,15 +15,17 @@
 #include <fcntl.h>
 #include <time.h>
 
-#include "ABE_IoPi.c"
+// #include "ABE_IoPi.c"
 
 using namespace v8;
 
 void initIOPI(const Nan::FunctionCallbackInfo<Value>& args){
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-  double address = args[0]->NumberValue();
-  IOPi_init((char)address);
+  char address = args[0]->NumberValue();
+  Local<Number> num = Nan::New(address);
+  args.GetReturnValue().Set(num);
+  // IOPi_init((char)address);
 }
 
 void setPortDirection(const Nan::FunctionCallbackInfo<Value>& args){
@@ -51,11 +53,11 @@ void writePin(const Nan::FunctionCallbackInfo<Value>& args){
 }
 
 void setup(Handle<Object> exports) {
-  NODE_SET_METHOD(exports, "init", initIOPI);
-  NODE_SET_METHOD(exports, "setPortDirection", set_port_direction);
-  NODE_SET_METHOD(exports, "setPinDirection", set_pin_direction);
-  NODE_SET_METHOD(exports, "writePort", writePort)
-  NODE_SET_METHOD(exports, "writePin", writePin)
+  exports->Set(Nan::New("init").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(initIOPI)->GetFunction());
+  // NODE_SET_METHOD(exports, "setPortDirection", setPortDirection);
+  // NODE_SET_METHOD(exports, "setPinDirection", setPinDirection);
+  // NODE_SET_METHOD(exports, "writePort", writePort);
+  // NODE_SET_METHOD(exports, "writePin", writePin);
 }
 
 NODE_MODULE(iopi, setup)
