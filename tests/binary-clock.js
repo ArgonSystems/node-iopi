@@ -23,8 +23,10 @@ var loop=function(){
     second++;
   }
   var bits=(second >>> 0).toString(2);
-  for(let x=leds.length-bits.length;x<leds.length;x++){
-    if(bits[x]=="1"){
+  var offset=leds.length-bits.length;
+  for(let x=offset;x<leds.length;x++){
+    var bitIndex=x-offset;
+    if(bits[bitIndex]=="1"){
       leds[x].open();
     }else{
       leds[x].close();
