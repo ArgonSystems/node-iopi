@@ -2,7 +2,20 @@ var iopi = require("../index");
 var sleep = require("sleep").sleep;
 var usleep = require("sleep").usleep;
 iopi.init(0x27);
-
+class LED{
+  constructor(bus,channels){
+    this.bus=bus;
+    this.channels=channels;
+  }
+  openChannel(channel){
+    iopi.setPinDirection(this.bus,this.channels[channel],0);
+    iopi.writePin(this.bus, this.channels[channel], 1);
+  }
+  closeChannel(channel){
+    iopi.setPinDirection(this.bus,this.channels[channel],0);
+    iopi.writePin(this.bus, this.channels[channel], 1);
+  }
+}
 var led=new LED(0x27,{red:1,green:2,blue:3});
 process.on('SIGINT', function(){
   led.closeChannel("red");
