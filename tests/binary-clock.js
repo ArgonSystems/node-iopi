@@ -19,10 +19,12 @@ process.on('SIGINT', function(){
 var timer=new Timer();
 var second=0;
 var loop=function(){
-  second++;
+  if(second<255){
+    second++;
+  }
   var bits=(second >>> 0).toString(2);
   console.log(bits);
-  for(let x=0;x<leds.length;x++){
+  for(let x=leds.length-bits.length;x>leds.length;x++){
     if(bits[x]=="1"){
       leds[x].open();
     }else{
