@@ -10,5 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "nan": "^2.3.3"
+  },
+  "devDependencies": {
+    "sleep": "^3.0.1"
   }
 }
