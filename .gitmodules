@@ -1,0 +1,3 @@
+[submodule "lib/ABElectronics_C_Libraries"]
+  path = lib/ABElectronics_C_Libraries
+  url = https://github.com/abelectronicsuk/ABElectronics_C_Libraries.git
