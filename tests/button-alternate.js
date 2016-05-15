@@ -25,7 +25,7 @@ process.on('SIGINT', function(){
   process.exit();
 }.bind(null, {exit:true}));
 var at=-1;
-var previous=at;
+var previous=0;
 var next=function(){
   leds[previous].close();
   leds[at].open();
