@@ -24,7 +24,7 @@ process.on('SIGINT', function(){
   }
   process.exit();
 }.bind(null, {exit:true}));
-var at=0;
+var at=-1;
 var previous=at;
 var next=function(){
   leds[previous].close();
@@ -35,4 +35,5 @@ var next=function(){
     at=0;
   }
 };
+next();
 var button=new Button(0x21,1,next);
