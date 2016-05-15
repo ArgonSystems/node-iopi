@@ -27,13 +27,13 @@ process.on('SIGINT', function(){
 var at=-1;
 var previous=0;
 var next=function(){
-  leds[previous].close();
-  leds[at].open();
-  previous=at;
   at++;
   if(at>=leds.length){
     at=0;
   }
+  leds[previous].close();
+  leds[at].open();
+  previous=at;
 };
 next();
 var button=new Button(0x21,1,next);
