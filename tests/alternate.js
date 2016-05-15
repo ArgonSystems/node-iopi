@@ -22,8 +22,8 @@ var previous=at;
 var loop=function(){
   leds[previous].close();
   leds[at].open();
-  at++;
   previous=at;
+  at++;
   if(at>=leds.length){
     at=0;
   }
