@@ -27,6 +27,6 @@ var loop=function(){
   }
   leds[previous].close();
   leds[at].open();
-  timer.setTimeout(loop,'','1s');
+  timer.setTimeout(loop,'','250ms');
 };
-timer.setTimeout(loop,'','1s');
+timer.setTimeout(loop,'','250ms');
