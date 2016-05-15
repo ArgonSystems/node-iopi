@@ -41,12 +41,21 @@ void writePin(const Nan::FunctionCallbackInfo<Value>& args){
   write_pin(address, pin, value);
 }
 
+void readPin(const Nan::FunctionCallbackInfo<Value>& args){
+  char address = args[0]->NumberValue();
+  char pin = args[1]->NumberValue();
+  int value = read_pin(address,pin);
+  Local<Number> num = Nan::New(value);
+  args.GetReturnValue().Set(num);
+}
+
 void setup(Handle<Object> exports) {
   exports->Set(Nan::New("init").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(initIOPI)->GetFunction());
   exports->Set(Nan::New("setPortDirection").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(setPortDirection)->GetFunction());
   exports->Set(Nan::New("setPinDirection").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(setPinDirection)->GetFunction());
   exports->Set(Nan::New("writePort").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(writePort)->GetFunction());
   exports->Set(Nan::New("writePin").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(writePin)->GetFunction());
+  exports->Set(Nan::New("readPin").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(readPin)->GetFunction());
 }
 
 NODE_MODULE(iopi, setup)
