@@ -7,7 +7,7 @@ npm install node-iopi
 
 Use with 
 ```
-var iopi = require('iopi');
+var iopi = require('node-iopi');
 ```
 
 
