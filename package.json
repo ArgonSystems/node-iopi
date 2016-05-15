@@ -1,7 +1,7 @@
 {
   "name": "node-iopi",
-  "version": "0.0.1",
-  "description": "ERROR: No README data found!",
+  "version": "1.0.0",
+  "description": "Node wrapper for the iopi c library",
   "main": "index.js",
   "scripts": {
     "install": "./install.sh",
