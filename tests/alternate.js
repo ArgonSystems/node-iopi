@@ -20,13 +20,13 @@ var timer=new Timer();
 var at=0;
 var previous=at;
 var loop=function(){
-  previous=at;
   leds[previous].close();
   leds[at].open();
   at++;
+  previous=at;
   if(at>=leds.length){
     at=0;
   }
-  timer.setTimeout(loop,'','250ms');
+  timer.setTimeout(loop,'','1s');
 };
-timer.setTimeout(loop,'','250ms');
+timer.setTimeout(loop,'','1s');
