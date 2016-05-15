@@ -8,6 +8,8 @@ class Button{
     this.onPress=onPress;
     iopi.init(bus);
     iopi.setPinDirection(this.bus,this.pin,1);
+    iopi.setPinPullup(this.bus, this.pin, 1);
+    iopi.invertPin(this.bus, this.pin, 1);
     timer.setTimeout(this._read.bind(this),'','50m');
     this._value=0;
   }
@@ -16,6 +18,7 @@ class Button{
     if(value && !this._value && typeof this.onPress == "function"){
       this.onPress();
     }
+    this._value=value;
     timer.setTimeout(this._read.bind(this),'','50m');
   }
 }
