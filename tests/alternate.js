@@ -21,12 +21,12 @@ var at=0;
 var previous=at;
 var loop=function(){
   previous=at;
+  leds[previous].close();
+  leds[at].open();
   at++;
   if(at>=leds.length){
     at=0;
   }
-  leds[previous].close();
-  leds[at].open();
   timer.setTimeout(loop,'','250ms');
 };
 timer.setTimeout(loop,'','250ms');
