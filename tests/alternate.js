@@ -27,6 +27,6 @@ var loop=function(){
   if(at>=leds.length){
     at=0;
   }
-  timer.setTimeout(loop,'','1s');
+  timer.setTimeout(loop,'','250m');
 };
-timer.setTimeout(loop,'','1s');
+timer.setTimeout(loop,'','250m');
