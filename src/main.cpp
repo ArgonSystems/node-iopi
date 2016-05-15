@@ -60,7 +60,7 @@ void invertPin(const Nan::FunctionCallbackInfo<Value>& args){
   char address = args[0]->NumberValue();
   char pin = args[1]->NumberValue();
   char polarity = args[2]->NumberValue();
-  value = read_pin(address, pin, polarity);
+  invert_pin(address, pin, polarity);
 }
 
 void setup(Handle<Object> exports) {
