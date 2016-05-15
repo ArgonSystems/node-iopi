@@ -49,6 +49,20 @@ void readPin(const Nan::FunctionCallbackInfo<Value>& args){
   args.GetReturnValue().Set(num);
 }
 
+void setPinPullup(const Nan::FunctionCallbackInfo<Value>& args){
+  char address = args[0]->NumberValue();
+  char pinval = args[1]->NumberValue();
+  char value = args[2]->NumberValue();
+  set_pin_pullup(address, pinval, value);
+}
+
+void invertPin(const Nan::FunctionCallbackInfo<Value>& args){
+  char address = args[0]->NumberValue();
+  char pin = args[1]->NumberValue();
+  char polarity = args[2]->NumberValue();
+  value = read_pin(address, pin, polarity);
+}
+
 void setup(Handle<Object> exports) {
   exports->Set(Nan::New("init").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(initIOPI)->GetFunction());
   exports->Set(Nan::New("setPortDirection").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(setPortDirection)->GetFunction());
@@ -56,6 +70,8 @@ void setup(Handle<Object> exports) {
   exports->Set(Nan::New("writePort").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(writePort)->GetFunction());
   exports->Set(Nan::New("writePin").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(writePin)->GetFunction());
   exports->Set(Nan::New("readPin").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(readPin)->GetFunction());
+  exports->Set(Nan::New("setPinPullup").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(setPinPullup)->GetFunction());
+  exports->Set(Nan::New("invertPin").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(invertPin)->GetFunction());
 }
 
 NODE_MODULE(iopi, setup)
