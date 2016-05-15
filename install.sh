@@ -1,3 +1,4 @@
 #!/bin/bash
-git submodules update
+git submodule init
+git submodule update
 node-gyp rebuild
