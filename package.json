@@ -1,12 +1,13 @@
 {
   "name": "node-iopi",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Node wrapper for the iopi c library",
   "main": "index.js",
   "scripts": {
+    "install": "./install.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "cbarrette, jackbarrett",
   "license": "MIT",
   "dependencies": {
     "nan": "^2.3.3"
@@ -14,5 +15,23 @@
   "devDependencies": {
     "nanotimer": "^0.3.14",
     "sleep": "^3.0.1"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArgonSystems/node-iopi.git"
+  },
+  "keywords": [
+    "iopi",
+    "io",
+    "gpio",
+    "raspberrypi",
+    "rpi",
+    "node"
+  ],
+  "bugs": {
+    "url": "https://github.com/ArgonSystems/node-iopi/issues"
   }
 }
